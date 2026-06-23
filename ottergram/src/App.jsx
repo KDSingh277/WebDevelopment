@@ -1,4 +1,5 @@
 import { Box, HStack, VStack } from '@chakra-ui/react';
+import { useState } from 'react';
 
 import './App.css';
 import Header from './components/Header';
@@ -19,7 +20,11 @@ const ottersArray = [
   { name: 'Barbara', image: Barbara },
 ]
 
+
 function App() {
+  const [selectedPostName, setSelectedPostName] = useState('Barry');
+  const selectedPost = ottersArray.find((otter) => otter.name === selectedPostName);
+  
   return (
     // Wrap the app in a Box to apply a nice background color that fills the screen
     <Box bg="blue.800" minH="100vh" color="white" pb={10}>
@@ -29,14 +34,15 @@ function App() {
           spacing={8} increases the gap between items. */}
         <VStack as="ul" spacing={8} align="flex-start" className='post-list'>
           {ottersArray.map((otter) => (
-            <Post  key={otter.name} image={otter.image} name={otter.name} />
+            <Post  key={otter.name} image={otter.image} name={otter.name}
+            setSelectedPostName = {setSelectedPostName} />
           ))}
         </VStack>
 
         <Box flex="1" minW= {0}>
-          <SelectedItem 
-            name = {ottersArray[0].name}
-            image = {ottersArray[0].image}
+          <SelectedItem
+            image = {selectedPost.image}
+            name = {selectedPost.name}
           />
         </Box>
       </HStack>
