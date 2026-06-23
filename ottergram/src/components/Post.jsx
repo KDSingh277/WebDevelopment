@@ -1,13 +1,16 @@
-import { Button, VStack } from '@chakra-ui/react'
+import { Box, Button } from '@chakra-ui/react'
 
-function Post(Props){
+function Post({image, name}){
+    const handleClick = (otterName) => {
+        return console.log('You clicked on' + otterName)
+    }
     return (
-        <li className='post-component'>
-            <Button h="auto" p={4} flexDirection="column" colorScheme="teal" variant="solid">
-                <img src={Props.image} alt={Props.name} />
-                <p>{Props.name}</p>
+        <Box as="li" className='post-component'>
+            <Button onClick = {() => handleClick(name)} h="auto" p={4} flexDirection="column" colorScheme="teal" variant="solid">
+                <img src={image} alt={name} />
+                <p className='post-name'>{name}</p>
             </Button>
-        </li>
+        </Box>
     )
 }
 

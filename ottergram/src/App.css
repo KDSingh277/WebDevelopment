@@ -19,6 +19,11 @@
   margin: 10px 0 0 0;
 }
 
+.post-component .post-name {
+font-weight: bold;
+font-size: 2em;
+}
+
 .header-component {
   text-align: left; /* Changed to left to match the rest of the layout */
   padding: 30px 30px 0 30px;
